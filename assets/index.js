@@ -61,11 +61,33 @@ function saveText(id) {
     // Save new array to localStorage
     localStorage.setItem('dayPlanner', JSON.stringify(dataLoaded));
 
-
-
 }
 
+// Local storage setup
+function storeLocalStorage() {
 
+    // Get array of calendar activities
+    var calendar = JSON.parse(localStorage.getItem("dayplanner"));
+
+    // If nothing is saved, create new save of calendar array
+    if (!calendar) {
+        localStorage.setItem("dayPlanner", JSON.stringify([]));
+        return;
+    }
+
+    // Create for loop to populate dayPlanner with events
+    for (var i = 0; i < 9; i++) {
+        var textAreaEl = $(`#input${i}`);
+        if (calendar[i]) {
+            textAreaEl.val(calendar[i]);
+        }
+    }
+}
+console.log(storeLocalStorage);
+
+
+
+/*
 var dayPlanner = []
 
 
@@ -90,6 +112,8 @@ function loadPlannerData() {
     saveData()
     displayPlannerData()
 }
+
+*/
 
 
 
