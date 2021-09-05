@@ -83,7 +83,30 @@ function storeLocalStorage() {
         }
     }
 }
-console.log(storeLocalStorage);
+
+// Set colors of backround blocks
+function colors() {
+    
+    // Get the value of current time
+    var time = moment().format("H");
+
+    // Set color for element
+    for (var i = 0; i < 9; i++) {
+
+        var hourBlock = $(`#input${i}`);
+
+        var hour = hourBlock.attr("data-hour");
+
+        if (time > hour) {
+            hourBlock.addClass("bg-secondary");
+        } else if (time < hour) {
+            hourBlock.addClass("bg-success");
+        } else if (time == hour) {
+            hourBlock.addClass("bg-danger");
+        }
+    }
+}
+
 
 
 
