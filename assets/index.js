@@ -1,53 +1,56 @@
 
+function dissplayDate () {
+        // Current date header
+        var currentDate = moment().format('dddd, MMMM Do');
+        $('#currentDay').text(currentDate);
+
+}
+
 function saveButtonHandlers() {
 
 
-$("save1").on("click", () => {
-    ServiceUIFrameContext(1);
+$("#save0").on("click", () => {
+    saveText(0);
 });
 
-$("save2").on("click", () => {
-    ServiceUIFrameContext(2);
+$("#save2").on("click", () => {
+    saveText(1);
 });
 
-$("save3").on("click", () => {
-    ServiceUIFrameContext(3);
+$("#save3").on("click", () => {
+    saveText(2);
 });
 
-$("save4").on("click", () => {
-    ServiceUIFrameContext(4);
+$("#save4").on("click", () => {
+    saveText(3);
 });
 
-$("save5").on("click", () => {
-    ServiceUIFrameContext(5);
+$("#save5").on("click", () => {
+    saveText(4);
 });
 
-$("save6").on("click", () => {
-    ServiceUIFrameContext(6);
+$("#save6").on("click", () => {
+    saveText(5);
 });
 
-$("save7").on("click", () => {
-    ServiceUIFrameContext(7);
+$("#save7").on("click", () => {
+    saveText(6);
 });
 
-$("save8").on("click", () => {
-    ServiceUIFrameContext(8);
+$("#save8").on("click", () => {
+    saveText(7);
 });
 
-$("save9").on("click", () => {
-    ServiceUIFrameContext(9);
+$("#save9").on("click", () => {
+    saveText(8);
 });
-
 }
 
 //Save text into localStorage by array
 function saveText(id) {
 
-    var dayPlanner = []
+    //var dayPlanner = []
     
-    // Current date header
-    var currentDate = moment().format('dddd, MMMM Do');
-        $('#currentDay').text(currentDate);
 
     // Get dayPlanner dataarray from localStorage
     var dataLoaded = JSON.parse(localStorage.getItem("dayPlanner"));
@@ -56,10 +59,10 @@ function saveText(id) {
     var inputText = $(`#input${id}`).val();
 
     // Store input text in localStorage array
-    dayPlanner[id] = inputText;
+    dataLoaded[id] = inputText;
 
     // Save new array to localStorage
-    localStorage.setItem('dayPlanner', JSON.stringify(dataLoaded));
+    localStorage.setItem("dayPlanner", JSON.stringify(dataLoaded));
 
 }
 
@@ -105,39 +108,31 @@ function colors() {
             hourBlock.addClass("bg-danger");
         }
     }
+    console.log(time);
 }
 
+// Overarching program run script
 
+function init() {
 
+    // Get and display date
+    dissplayDate();
 
-/*
-var dayPlanner = []
+    // Create event handlers for saved elements
+    saveButtonHandlers();
 
+    // Disaply date and save text to local storage
+    // saveText();
 
-// Current date header
-function currentDate() {
-    var currentDate = moment().format('dddd, MMMM Do');
-    $('#currentDay').text(currentDate);
+    // Local storage setup
+    storeLocalStorage();
+
+    // Display proper colors for time block elements
+    colors();
 }
 
-// Save data to LocalStorage
-function saveData() {
-    localStorage.setItem("dayPlanner", JSON.stringify(dayPlanner));
-}
-
-function loadPlannerData() {
-    var dataLoaded = JSON.parse(localStorage.getItem("dayPlannner"));
-
-    if (dataLoaded) {
-        dayPlanner = dataLoaded;
-    }
-
-    saveData()
-    displayPlannerData()
-}
-
-*/
-
+// Start script
+init();
 
 
 

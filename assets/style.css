@@ -98,3 +98,8 @@ p {
   background-color: #77dd77;
   color: white;
 }
+
+.time-block {
+  text-align: center;
+  border-radius: 15px;
+}
