@@ -108,7 +108,6 @@ function colors() {
             hourBlock.addClass("bg-danger");
         }
     }
-    console.log(time);
 }
 
 // Overarching program run script
